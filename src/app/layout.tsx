@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes"
 import { Manrope } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -20,21 +21,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider>
+
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${manrope.variable} antialiased`}
         suppressHydrationWarning
-      >
+        >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
-        >
+          >
             
           {children}
         </ThemeProvider>
       </body>
     </html>
+    </ClerkProvider>
   );
 }
