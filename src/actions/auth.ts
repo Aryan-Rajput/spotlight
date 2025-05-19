@@ -45,7 +45,7 @@ export async function onAuthenticateUser() {
 
         if(newUser) {
             return {
-                status: 200,
+                status: 201,
                 user: newUser,
             }
         }
